@@ -1,0 +1,37 @@
+{
+    "name": "test2",
+    "version": "0.0.1",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "debug": "nodemon server.js",
+        "start": "node server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@steedos/accounts": "1.19.8",
+        "@steedos/steedos-plugin-workflow": "^2.0.8",
+        "dotenv-flow": "^3.1.0",
+        "mssql": "^6.2.0",
+        "mysql": "^2.18.1",
+        "steedos-server": "1.21.2"
+    },
+    "devDependencies": {
+        "nodemon": "^1.19.1"
+    },
+    "homepage": "https://developer.steedos.com",
+    "resolutions": {
+        "**/lodash": "^4.17.15",
+        "**/handlebars": "^4.3.0",
+        "**/debug": "^3.1.0",
+        "**/hoek": "^5.0.3",
+        "**/cryptiles": "^4.1.2",
+        "**/bcrypt": "3.0.6",
+        "**/samlp": "3.4.1",
+        "**/xmldom": "0.2.1",
+        "**/tslib": "1.11.2",
+        "**/fibers": "^4.0.3"
+    }
+}
