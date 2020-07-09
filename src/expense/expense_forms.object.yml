@@ -3,6 +3,7 @@ label: 费用单据
 icon: quip_sheet
 enable_api: true
 enable_files: true
+enable_workflow: true
 fields:
   name:
     type: text
