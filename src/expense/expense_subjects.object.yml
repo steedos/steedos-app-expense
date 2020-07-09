@@ -1,0 +1,55 @@
+name: expense_subjects
+label: 费用科目
+icon: product_item
+enable_api: true
+fields:
+  name:
+    type: text
+    label: 科目名称
+    required: true
+    searchable: true
+    index: true
+  # 此字段需要自动计算
+  full_name:
+    type: text
+    label: 完整名称
+    omit: true
+    readonly: true
+  parent_id:
+    label: 上级科目
+    type: lookup
+    reference_to: expense_subjects
+    sortable: true
+    filterable: true
+    searchable: true
+  # 此字段需要自动计算
+  sub_subjects_count:
+    type: number
+    label: 子科目数量
+    inlineHelpText: The number of products under this category (Does not consider the children categories)
+    omit: true
+    readonly: true
+
+list_views:
+  all:
+    label: 所有科目
+    columns:
+      - name
+      - parent_id
+      - created
+
+permission_set:
+  user:
+    allowCreate: true
+    allowDelete: true
+    allowEdit: true
+    allowRead: true
+    modifyAllRecords: false
+    viewAllRecords: true 
+  admin:
+    allowCreate: true
+    allowDelete: true
+    allowEdit: true
+    allowRead: true
+    modifyAllRecords: true
+    viewAllRecords: true

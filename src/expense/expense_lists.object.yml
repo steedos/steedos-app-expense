@@ -1,0 +1,86 @@
+name: expense_lists
+label: 费用发生
+icon: poll
+enable_api: true
+enable_files: true
+fields:
+  name:
+    type: text
+    label: 名称
+    required: true
+    searchable: true
+    index: true
+  expense_subject:
+    label: 费用科目
+    type: lookup
+    reference_to: expense_subjects
+    sortable: true
+    filterable: true
+    searchable: true
+  spend_date:
+    type: date
+    label: 发生日期
+  spend_user:
+    label: 发生人员
+    type: lookup
+    reference_to: space_users
+    sortable: true
+    filterable: true
+    searchable: true
+  spend_value:
+    type: number
+    label: 发生数额
+    scale: 2
+  expense_budget:
+    label: 费用预算
+    type: master_detail
+    reference_to: expense_budgets
+    sortable: true
+    filterable: true
+    searchable: true
+  approve_state:
+    type: number
+    label: 审批状态
+    scale: 2
+    omit: true
+    readonly: true
+  description:
+    type: textarea
+    label: 备注
+    is_wide: true
+list_views:
+  all:
+    label: 所有发生
+    columns:
+      - name
+      - spend_date
+      - spend_user
+      - spend_value
+      - expense_subject
+      - expense_budget
+      - approve_state
+      - description
+
+permission_set:
+  user:
+    allowCreate: true
+    allowDelete: true
+    allowEdit: true
+    allowRead: true
+    modifyAllRecords: false
+    viewAllRecords: true 
+  admin:
+    allowCreate: true
+    allowDelete: true
+    allowEdit: true
+    allowRead: true
+    modifyAllRecords: true
+    viewAllRecords: true
+  supplier:
+    allowCreate: false
+    allowDelete: false
+    allowEdit: false
+    allowRead: true
+    modifyAllRecords: false
+    viewAllRecords: true
+    unreadable_fields: ['price','description','product_category'] 

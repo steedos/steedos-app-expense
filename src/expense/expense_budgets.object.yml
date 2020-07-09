@@ -1,0 +1,111 @@
+name: expense_budgets
+label: 费用预算
+icon: goals
+enable_api: true
+enable_files: true
+fields:
+  name:
+    type: text
+    label: 名称
+    required: true
+    searchable: true
+    index: true
+  year:
+    label: 年度
+    type: select
+    sortable: true
+    options:
+      - label: "2020全年"
+        value: "2020"
+    filterable: true
+    required: true
+    defaultValue: 2020
+    searchable: true
+  start_date:
+    type: date
+    label: 开始日期
+    inlineHelpText: The start date of expense budget.
+    omit: true
+    readonly: true
+  end_date:
+    type: date
+    label: 结束日期
+    inlineHelpText: The end date of expense budget.
+    omit: true
+    readonly: true
+  expense_subject:
+    label: 费用科目
+    type: master_detail
+    reference_to: expense_subjects
+    sortable: true
+    filterable: true
+    searchable: true
+  department:
+    label: 部门
+    type: lookup
+    reference_to: organizations
+    sortable: true
+    filterable: true
+    searchable: true
+  budget_value:
+    type: number
+    label: 预算数
+    scale: 2
+  spended_value:
+    type: number
+    label: 已发生数
+    scale: 2
+    omit: true
+    readonly: true
+  surplus_value:
+    type: number
+    label: 可用预算数
+    scale: 2
+    omit: true
+    readonly: true
+  approving_value:
+    type: number
+    label: 审批中
+    scale: 2
+    omit: true
+    readonly: true
+  description:
+    type: textarea
+    label: 备注
+    is_wide: true
+list_views:
+  all:
+    label: 所有预算
+    columns:
+      - name
+      - year
+      - department
+      - expense_subject
+      - budget_value
+      - spended_value
+      - surplus_value
+      - approving_value
+
+permission_set:
+  user:
+    allowCreate: true
+    allowDelete: true
+    allowEdit: true
+    allowRead: true
+    modifyAllRecords: false
+    viewAllRecords: true 
+  admin:
+    allowCreate: true
+    allowDelete: true
+    allowEdit: true
+    allowRead: true
+    modifyAllRecords: true
+    viewAllRecords: true
+  supplier:
+    allowCreate: false
+    allowDelete: false
+    allowEdit: false
+    allowRead: true
+    modifyAllRecords: false
+    viewAllRecords: true
+    unreadable_fields: ['price','description','product_category'] 
