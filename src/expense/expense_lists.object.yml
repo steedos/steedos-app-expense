@@ -57,7 +57,7 @@ fields:
     is_wide: true
 list_views:
   all:
-    label: 所有发生
+    label: 所有记录
     columns:
       - name
       - spend_date

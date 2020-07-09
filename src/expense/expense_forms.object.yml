@@ -1,12 +1,12 @@
 name: expense_forms
 label: 费用单据
-icon: goals
+icon: quip_sheet
 enable_api: true
 enable_files: true
 fields:
   name:
     type: text
-    label: 名称
+    label: 名称quip_sheet
     required: true
     searchable: true
     index: true
@@ -43,7 +43,7 @@ fields:
     is_wide: true
 list_views:
   all:
-    label: 所有预算
+    label: 所有单据
     columns:
       - name
       - type
