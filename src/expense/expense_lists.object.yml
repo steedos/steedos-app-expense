@@ -3,6 +3,7 @@ label: 费用明细
 icon: poll
 enable_api: true
 enable_files: true
+enable_workflow: true
 fields:
   name:
     type: text
