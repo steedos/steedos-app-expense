@@ -85,6 +85,9 @@ list_views:
       - spended_value
       - surplus_value
       - approving_value
+relatedList:
+  - cms_files 
+  - expense_lists  
 
 permission_set:
   user:

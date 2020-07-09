@@ -34,14 +34,14 @@ fields:
     scale: 2
   expense_budget:
     label: 费用预算
-    type: master_detail
+    type: lookup
     reference_to: expense_budgets
     sortable: true
     filterable: true
     searchable: true
   expense_form:
     label: 费用单据
-    type: lookup
+    type: master_detail
     reference_to: expense_forms
     sortable: true
     filterable: true
