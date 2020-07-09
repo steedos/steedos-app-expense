@@ -1,6 +1,6 @@
-name: expense_lists
-label: 费用明细
-icon: poll
+name: expense_forms
+label: 费用单据
+icon: goals
 enable_api: true
 enable_files: true
 fields:
@@ -10,63 +10,50 @@ fields:
     required: true
     searchable: true
     index: true
-  expense_subject:
-    label: 费用科目
-    type: lookup
-    reference_to: expense_subjects
+  type:
+    label: 类型
+    type: select
     sortable: true
+    options:
+      - label: 费用报销单
+        value: expense_claims 
     filterable: true
+    required: true
     searchable: true
-  spend_date:
-    type: date
-    label: 发生日期
-  spend_user:
+  submiter:
     label: 发生人员
     type: lookup
     reference_to: space_users
     sortable: true
     filterable: true
     searchable: true
-  spend_value:
+  submit_date:
+    type: date
+    label: 提交日期
+  total_value:
     type: number
-    label: 发生数额
+    label: 总金额
     scale: 2
-  expense_budget:
-    label: 费用预算
-    type: master_detail
-    reference_to: expense_budgets
-    sortable: true
-    filterable: true
-    searchable: true
-  expense_form:
-    label: 费用单据
-    type: lookup
-    reference_to: expense_forms
-    sortable: true
-    filterable: true
-    searchable: true
-  approve_state:
-    type: number
-    label: 审批状态
-    scale: 2
-    omit: true
-    readonly: true
+  complete_date:
+    type: date
+    label: 完成日期
   description:
     type: textarea
     label: 备注
     is_wide: true
 list_views:
   all:
-    label: 所有发生
+    label: 所有预算
     columns:
       - name
-      - spend_date
-      - spend_user
-      - spend_value
-      - expense_subject
-      - expense_budget
-      - approve_state
-      - description
+      - type
+      - submiter
+      - submit_date
+      - total_value
+      - complete_date
+relatedList:
+  - cms_files 
+  - expense_lists  
 
 permission_set:
   user:
