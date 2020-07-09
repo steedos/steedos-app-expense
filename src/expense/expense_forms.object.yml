@@ -6,7 +6,7 @@ enable_files: true
 fields:
   name:
     type: text
-    label: 名称quip_sheet
+    label: 名称
     required: true
     searchable: true
     index: true
