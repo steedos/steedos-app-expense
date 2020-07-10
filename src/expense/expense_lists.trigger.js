@@ -11,8 +11,6 @@ getObject: function(object_name: string)Id
 query: 查询数据相关参数[json], //仅beforeFind时存在此属性
 */
 
-// const prManager = require('./purchase_requisitions.manager');
-
 module.exports = {
   listenTo: 'expense_lists',
 
@@ -31,17 +29,22 @@ async function caculateBudget(listId) {
   const steedosSchema = objectql.getSteedosSchema();
   let listObj = steedosSchema.getObject('expense_lists');
 
-  /* let requisition = await listObj.findOne(listId);
-  if (!requisition) {
-    console.error(`未找到采购需求：${listId}`);
+  let this_list = await listObj.findOne(listId);
+  if (!this_list) {
+    console.error(`未找到费用明细：${listId}`);
     return;
   }
 
-  let product_qty = 0;
-  (await steedosSchema.getObject('purchase_requisitions_lines').find({ filters: [['parent_id', '=', listId]] })).forEach(function (thisline) {
-    product_qty += (thisline.product_qty || 0);
-  });*/
-
-  let this_expense_budget = "TSq5MoqR8jiZBeXFG";
-  await listObj.directUpdate(listId, { expense_budget: this_expense_budget }); 
+  let this_department = this_list.spend_department;
+  let this_subject = this_list.expense_subject;
+  // let this_expense_budget = "TSq5MoqR8jiZBeXFG";
+  let this_expense_budget = "";
+  (await steedosSchema.getObject('expense_budgets').find({ filters: [['department', '=', this_department],['expense_subject', '=', this_subject]] })).forEach(function (thisline) {
+    this_expense_budget = thisline._id;
+  });
+  if (!this_expense_budget) {
+    console.error(`未找到费用科目：${listId}`);
+  } else {
+    await listObj.directUpdate(listId, { expense_budget: this_expense_budget }); 
+  }
 }
