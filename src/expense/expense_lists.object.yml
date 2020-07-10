@@ -21,6 +21,13 @@ fields:
   spend_date:
     type: date
     label: 发生日期
+  spend_department:
+    label: 发生部门
+    type: lookup
+    reference_to: organizations
+    sortable: true
+    filterable: true
+    searchable: true
   spend_user:
     label: 发生人员
     type: lookup
@@ -62,6 +69,7 @@ list_views:
     columns:
       - name
       - spend_date
+      - spend_department
       - spend_user
       - spend_value
       - expense_subject

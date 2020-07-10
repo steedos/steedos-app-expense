@@ -18,8 +18,17 @@ fields:
     options:
       - label: 费用报销单
         value: expense_claims 
+      - label: 出差报销单
+        value: trip_claims 
     filterable: true
     required: true
+    searchable: true
+  department:
+    label: 发生部门
+    type: lookup
+    reference_to: organizations
+    sortable: true
+    filterable: true
     searchable: true
   submiter:
     label: 发生人员
@@ -48,6 +57,7 @@ list_views:
     columns:
       - name
       - type
+      - department
       - submiter
       - submit_date
       - total_value
