@@ -38,24 +38,21 @@ async function caculateBudget(listId) {
   let this_department = this_list.spend_department;
   let this_subject = this_list.expense_subject;
 
-  if (this_list.spend_department.id){
-    let this_department = this_list.spend_department.id;
+  if (this_list.spend_department.id) {
+    this_department = this_list.spend_department.id;
 
     (await steedosSchema.getObject('expense_subjects').find({ filters: [['name', '=', this_subject]] })).forEach(function (thisline) {
       this_subject = thisline._id;
     });
-
-    await listObj.directUpdate(listId, { spend_department: this_department , expense_subject: this_subject }); 
+    await listObj.directUpdate(listId, { spend_department: this_department, expense_subject: this_subject });
   }
 
-  // let this_expense_budget = "TSq5MoqR8jiZBeXFG";
   let this_expense_budget = "";
-  (await steedosSchema.getObject('expense_budgets').find({ filters: [['department', '=', this_department],['expense_subject', '=', this_subject]] })).forEach(function (thisline) {
-    this_expense_budget = thisline._id;
+  (await steedosSchema.getObject('expense_budgets').find({ filters: [['department', '=', this_department], ['expense_subject', '=', this_subject]] })).forEach(function (thisbudget) {
+    this_expense_budget = thisbudget._id;
   });
   if (!this_expense_budget) {
-    console.error(`未找到费用科目：${listId}`);
   } else {
-    await listObj.directUpdate(listId, { expense_budget: this_expense_budget }); 
+    await listObj.directUpdate(listId, { expense_budget: this_expense_budget });
   }
 }
