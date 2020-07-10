@@ -47,6 +47,7 @@ async function caculateBudget(listId) {
     (await steedosSchema.getObject('expense_subjects').find({ filters: [['name', '=', this_subject]] })).forEach(function (thisline) {
       this_subject = thisline._id;
     });
+    await listObj.directUpdate(listId, { expense_subject: this_subject }); 
   }
 
   // let this_expense_budget = "TSq5MoqR8jiZBeXFG";
