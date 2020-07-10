@@ -36,18 +36,16 @@ async function caculateBudget(listId) {
   }
 
   let this_department = this_list.spend_department;
-  if (this_list.spend_department.id){
-    let new_spend_department = this_list.spend_department.id;
-    await listObj.directUpdate(listId, { spend_department: new_spend_department }); 
-  }
-
   let this_subject = this_list.expense_subject;
-  let subjectsObj = steedosSchema.getObject('expense_subjects');
-  if (!subjectsObj.findOne(this_subject)){
+
+  if (this_list.spend_department.id){
+    let this_department = this_list.spend_department.id;
+
     (await steedosSchema.getObject('expense_subjects').find({ filters: [['name', '=', this_subject]] })).forEach(function (thisline) {
       this_subject = thisline._id;
     });
-    await listObj.directUpdate(listId, { expense_subject: this_subject }); 
+
+    await listObj.directUpdate(listId, { spend_department: this_department , expense_subject: this_subject }); 
   }
 
   // let this_expense_budget = "TSq5MoqR8jiZBeXFG";
