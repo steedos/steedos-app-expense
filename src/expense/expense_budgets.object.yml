@@ -91,24 +91,20 @@ relatedList:
 
 permission_set:
   user:
-    allowCreate: true
-    allowDelete: true
-    allowEdit: true
+    allowCreate: false
+    allowDelete: false
+    allowEdit: false
     allowRead: true
+    viewCompanyRecords: true
+    modifyCompanyRecords: false
+    viewAllRecords: false 
     modifyAllRecords: false
-    viewAllRecords: true 
   admin:
     allowCreate: true
     allowDelete: true
     allowEdit: true
     allowRead: true
+    viewCompanyRecords: true
+    modifyCompanyRecords: true
+    viewAllRecords: true
     modifyAllRecords: true
-    viewAllRecords: true
-  supplier:
-    allowCreate: false
-    allowDelete: false
-    allowEdit: false
-    allowRead: true
-    modifyAllRecords: false
-    viewAllRecords: true
-    unreadable_fields: ['price','description','product_category'] 
