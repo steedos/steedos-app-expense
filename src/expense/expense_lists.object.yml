@@ -72,9 +72,12 @@ list_views:
       - spend_department
       - spend_user
       - spend_value
-      - expense_subject
-      - expense_budget
-      - expense_form
+      - field: expense_subject 
+        width: 140
+      - field: expense_budget 
+        width: 200
+      - field: expense_form 
+        width: 150
 
 permission_set:
   user:

@@ -83,7 +83,8 @@ list_views:
   all:
     label: 所有预算
     columns:
-      - name
+      - field: name 
+        width: 200
       - year
       - department
       - expense_subject
