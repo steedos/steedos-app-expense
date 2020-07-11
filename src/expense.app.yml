@@ -4,10 +4,19 @@ description: 费用预算编制、费用发生、费用管控。
 icon_slds: coaching
 is_creator: true
 objects: 
-  - expense_subjects
   - expense_budgets
   - expense_forms
   - expense_lists
   - instances
   - tasks
   - events
+admin_menus:
+  - _id: expense
+    name: 费用管控
+    permission_sets:
+      - admin
+    expanded: false
+  - _id: expense_subjects
+    name: 费用科目
+    object_name: expense_subjects
+    parent: expense
