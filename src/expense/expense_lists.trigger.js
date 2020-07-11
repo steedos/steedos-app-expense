@@ -11,6 +11,8 @@ getObject: function(object_name: string)Id
 query: 查询数据相关参数[json], //仅beforeFind时存在此属性
 */
 
+const ebManager = require('./expense_budgets.manager');
+
 module.exports = {
   listenTo: 'expense_lists',
 
@@ -18,8 +20,11 @@ module.exports = {
     await caculateBudget(this.doc._id);
   },
 
-}
+  afterUpdate: async function () {
+    await caculateBudget(this.id);
+  },
 
+}
 const objectql = require('@steedos/objectql');
 
 async function caculateBudget(listId) {
@@ -54,5 +59,6 @@ async function caculateBudget(listId) {
   if (!this_expense_budget) {
   } else {
     await listObj.directUpdate(listId, { expense_budget: this_expense_budget });
+    await ebManager.caculateAmount(this_expense_budget);
   }
 }
