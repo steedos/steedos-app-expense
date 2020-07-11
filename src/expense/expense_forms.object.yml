@@ -51,6 +51,12 @@ fields:
     type: textarea
     label: 备注
     is_wide: true
+  company_id:
+    label: 所属单位
+    required: true
+    omit: false
+    hidden: false
+    sortable: true
 list_views:
   all:
     label: 所有单据

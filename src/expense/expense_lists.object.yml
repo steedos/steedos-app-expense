@@ -59,6 +59,12 @@ fields:
     scale: 2
     omit: true
     readonly: true
+  company_id:
+    label: 所属单位
+    required: true
+    omit: false
+    hidden: false
+    sortable: true
   description:
     type: textarea
     label: 备注
