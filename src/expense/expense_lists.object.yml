@@ -74,8 +74,7 @@ list_views:
       - spend_value
       - expense_subject
       - expense_budget
-      - approve_state
-      - description
+      - expense_form
 
 permission_set:
   user:

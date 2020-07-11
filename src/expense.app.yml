@@ -8,8 +8,12 @@ objects:
   - expense_forms
   - expense_lists
   - instances
-  - tasks
-  - events
+  - reports
+mobile_objects: 
+  - expense_budgets
+  - expense_forms
+  - expense_lists
+  - instances
 admin_menus:
   - _id: expense
     name: 费用管控
