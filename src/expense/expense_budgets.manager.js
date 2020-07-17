@@ -22,7 +22,13 @@ async function caculateAmount(budgetId) {
   let this_approving_value = 0;
   let this_surplus_value = 0;
   (await steedosSchema.getObject('expense_lists').find({ filters: [['expense_budget', '=', budgetId]] })).forEach(function (thisline) {
-    this_approving_value += (thisline.spend_value || 0);
+    if (thisline.approve_state == 'approved') {
+      this_spended_value += (thisline.spend_value || 0);
+    } else if (thisline.approve_state == 'completed') {
+      this_spended_value += (thisline.spend_value || 0);
+    } else if (thisline.approve_state == 'pending') {
+      this_approving_value += (thisline.spend_value || 0);
+    }
   });
   this_surplus_value = this_budget_value - this_spended_value
   await budgetObj.directUpdate(budgetId, { spended_value: this_spended_value , approving_value: this_approving_value , surplus_value: this_surplus_value });
