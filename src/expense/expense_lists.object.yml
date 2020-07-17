@@ -54,11 +54,24 @@ fields:
     filterable: true
     searchable: true
   approve_state:
-    type: number
     label: 审批状态
     scale: 2
     omit: true
     readonly: true
+    type: select
+    options:
+      - label: 草稿
+        value: draft
+      - label: 进行中
+        value: pending
+      - label: 已完成
+        value: completed
+      - label: 已核准
+        value: approved
+      - label: 已驳回
+        value: rejected
+      - label: 已取消
+        value: terminated
   company_id:
     label: 所属单位
     required: true
@@ -74,6 +87,7 @@ list_views:
     label: 所有记录
     columns:
       - name
+      - approve_state
       - spend_date
       - spend_department
       - spend_user
