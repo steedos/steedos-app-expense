@@ -16,7 +16,7 @@
         "dotenv-flow": "^3.1.0",
         "mssql": "^6.2.0",
         "mysql": "^2.18.1",
-        "steedos-server": "1.21.5"
+        "steedos-server": "1.21.6"
     },
     "devDependencies": {
         "nodemon": "^1.19.1"
